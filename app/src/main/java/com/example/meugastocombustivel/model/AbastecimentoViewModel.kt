@@ -27,7 +27,11 @@ class AbastecimentoViewModel(application: Application) : AndroidViewModel(applic
 
     fun adicionar(abastecimento: Abastecimento) {
         viewModelScope.launch {
-            dao.inserir(abastecimento)
+            if (abastecimento.id == 0) {
+                dao.inserir(abastecimento)
+            } else {
+                dao.atualizar(abastecimento)
+            }
             carregarAbastecimentos()
         }
     }

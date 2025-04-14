@@ -8,6 +8,9 @@ interface AbastecimentoDao {
     @Insert
     suspend fun inserir(abastecimento: Abastecimento)
 
+    @Update
+    suspend fun atualizar(abastecimento: Abastecimento)
+
     @Query("SELECT * FROM abastecimentos ORDER BY id DESC")
     suspend fun listarTodos(): List<Abastecimento>
 
